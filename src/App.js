@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './components/Form/Form'
+import Container from "@material-ui/core/Container"
+import Typography from '@material-ui/core/Typography';
+import 'fontsource-roboto';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container component="article" maxWidth="sm">
+
+      <Typography variant="h6" component="h1">
+        SING-IN
+</Typography>
+
+      <Form onSub={onSubForm} isIdValid={isIdValidForm} />
+
+    </Container>
   );
+}
+
+function onSubForm(data) {
+  console.log(data)
+}
+
+function isIdValidForm(id) {
+if(id.length !== 11){
+  return{status:false, text:"Id must have 11 numbers"}
+}else{
+  return{status:true, text:""}
+}
 }
 
 export default App;
